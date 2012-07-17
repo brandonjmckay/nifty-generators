@@ -1,25 +1,26 @@
-- title "<%= plural_name.titleize %>"
+%section.columns.twelve
+	%header.row
+		- title "<%= plural_name.titleize %>"
+		
+	- if notice
+		%div.row
+			%p.alert-box.columns.six
+				= notice
+	%div.row
+		- for <%= singular_name %> in @<%= plural_name %>
+			%article.columns.twelve.<%= singular_name %>
+				- for attribute in attributes 
+					%div.columns.four.<%= singular_name %>-<%= attribute.name %>.<%= attribute.column.human_name %>= h <%= singular_name %>.<%= attribute.name %>
+		
+				%div.admin-links.columns.four
+					- if action? :show
+						%div.show.columns.four.<%= singular_name %>= link_to 'Show', <%= singular_name %>
+					- if action? :edit
+						%div.show.columns.four.<%= singular_name %>= link_to 'Edit', edit_<%= singular_name %>_path(<%= singular_name %>)
+					- if action? :destroy
+						%div.show.columns.four.<%= singular_name %>= link_to 'Delete', <%= singular_name %>, :confirm => 'Are you sure?', :method => :delete
+					
+	
+	- if actions? :new
+		= link_to "New <%= singular_name.titleize %>", new_<%= singular_name %>_path
 
-%table
-  %tr
-    <%- for attribute in attributes -%>
-    %th <%= attribute.column.human_name %>
-    <%- end -%>
-  - for <%= singular_name %> in @<%= plural_name %>
-    %tr
-      <%- for attribute in attributes -%>
-      %td= h <%= singular_name %>.<%= attribute.name %>
-      <%- end -%>
-      <%- if action? :show -%>
-      %td= link_to 'Show', <%= singular_name %>
-      <%- end -%>
-      <%- if action? :edit -%>
-      %td= link_to 'Edit', edit_<%= singular_name %>_path(<%= singular_name %>)
-      <%- end -%>
-      <%- if action? :destroy -%>
-      %td= link_to 'Destroy', <%= singular_name %>, :confirm => 'Are you sure?', :method => :delete
-      <%- end -%>
-
-<%- if actions? :new -%>
-%p= link_to "New <%= singular_name.titleize %>", new_<%= singular_name %>_path
-<%- end -%>

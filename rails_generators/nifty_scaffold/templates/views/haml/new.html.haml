@@ -1,7 +1,9 @@
-- title "New <%= singular_name.titleize %>"
-
-<%= render_form %>
-
-<%- if action? :index -%>
-%p= link_to "Back to List", <%= plural_name %>_path
-<%- end -%>
+%section.columns.twelve
+	%header.row
+		- title "New <%= singular_name.titleize %>"
+	
+	= render_form
+	
+	- if action? :index 
+		%p= link_to "Back to <%= plural_name.titleize %>", <%= plural_name %>_path
+	
