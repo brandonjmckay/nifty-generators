@@ -1,3 +1,6 @@
+= Div Generator Branch
+My modification on the Nifty Generators gem. Currently changes the HAML scaffold templates to use divs marked up for Foundation by Zurb.
+
 = Nifty Generators
 
 A collection of useful Rails generator scripts for scaffolding, layout files, authentication, and more.
