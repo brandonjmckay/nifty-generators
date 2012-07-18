@@ -1,9 +1,9 @@
 %section.columns.twelve
 	%header.row
-		- title "New <%= singular_name.titleize %>"
+		<%% title "New <%= singular_name.titleize %>" %>
 	
 	= render_form
 	
 	- if action? :index 
-		%p= link_to "Back to <%= plural_name.titleize %>", <%= items_path %>
+		<%%= link_to "Back to <%= plural_name.titleize %>", <%= items_path %> %>
 	

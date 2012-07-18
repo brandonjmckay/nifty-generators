@@ -1,11 +1,10 @@
 %section.columns.twelve
 	%header.row
-		- title "Edit <%= singular_name.titleize %>"
+		<%% title "Edit <%= singular_name.titleize %>" %>
 	= render_form
 	- if actions? :show, :index
 		%div.admin-links.columns.four
 			- if action? :show
-				= link_to "Show", <%= item_path :instance_variable => true %>
-				|
+				<%%= link_to "Show", <%= item_path :instance_variable => true %> %> |
 			- if action? :index
-				= link_to "View All", <%= items_path %>
+				<%%= link_to "View All", <%= items_path %> %>

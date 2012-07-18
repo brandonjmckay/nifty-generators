@@ -1,13 +1,13 @@
 %section.columns.twelve
 	%header.row
-		- title "<%= plural_name.titleize %>"
+		<%% title "<%= plural_name.titleize %>" %>
 		
 	- if notice
 		%div.row
 			%p.alert-box.columns.six
 				= notice
 	%div.row
-		- for <%= instance_name %> in @<%= instances_name %>
+		<%% for <%= instance_name %> in @<%= instances_name %> %>
 			%article.columns.twelve.<%= singular_name %>
 				- for attribute in model_attributes 
 					%div.columns.four.<%= instance_name %>-<%= attribute.name %>.<%= attribute.human_name %>= <%= instance_name %>.<%= attribute.name %>
@@ -19,7 +19,7 @@
 						%div.show.columns.four.<%= instance_name %>= link_to 'Edit', <%= item_path :action => :edit %>
 					- if action? :destroy
 						%div.show.columns.four.<%= instance_name %>= link_to 'Delete', <%= item_path %>, :confirm => 'Are you sure?', :method => :delete
-					
+		<%% end %>
 	
 	- if actions? :new
 		= link_to "New <%= singular_name.titleize %>", <%= item_path :action => :new %>
